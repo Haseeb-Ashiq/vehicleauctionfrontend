@@ -1,0 +1,86 @@
+@import url('../../../generic.css');
+:root{
+    --f1-color:#000;
+    --f2-color:#808080;
+    --f3-color:#fff;
+    --f4-color:#009933;
+    --f5-color:#ff66b3;
+    --f6-color:#ff99cc;
+    --f7-color:rgba(104,80,80,.03);
+    --f8-color:rgba(104,80,80,0.05);
+    --f9-color:#bb99ff;
+    --f10-color:#c2d6d6;
+}
+.super-container{
+    max-height:95%;
+    width:95%;
+    overflow-y: auto;
+    /* border:1px solid black; */
+    margin:15px auto;
+}
+.super-container::-webkit-scrollbar{
+    width:5px;
+}
+.super-container::-webkit-scrollbar-track{
+    background-color: white;
+}
+.super-container::-webkit-scrollbar-thumb{
+    background-color: #ff66d3;
+    border-radius: 5px;
+}
+.panel{
+    width:99%;
+    /* border:1px solid black; */
+    margin:0 auto;
+    /* max-height: 300px; */
+}
+.panel .panel-tabs{
+    height:150px;
+    width:290px;
+    /* border:1px solid black; */
+    box-shadow: 1px 1px 0 0 rgba(0,0,0,.3),
+    -1px -1px 0 0 rgba(0,0,0,.3);
+    margin:10px 5px;
+    transition: all .5s ease-in;
+    border-radius: 5px;
+}
+.panel .panel-tabs:hover{
+    box-shadow: 1px 1px 3px 3px rgba(0,0,0,.3),
+    -1px -1px 3px 3px rgba(0,0,0,.3);
+}
+.panel .tab-color-1{
+    background-color: var(--f5-color);
+}
+.panel .tab-color-2{
+    background-color: var(--f4-color);
+}
+.panel .tab-color-3{
+    background-color: var(--f6-color);
+}
+.panel .tab-color-4{
+    background-color:var(--f9-color);
+}
+.panel .tab-color-5{
+    background-color:var(--f2-color);
+}
+.panel-tabs .panel-tab-icon{
+    font-size: 50px;
+    color:white;
+}
+.panel-tabs .panel-tab-text p{
+font-size: 15px;
+font-weight: 500;
+color:white;
+}
+.panel-tabs .panel-tab-text span{
+    color:white;
+}
+
+/* chart section */
+.chart-container{
+    width:99%;
+    /* border:1px solid black; */
+    margin:10px auto;
+    /* max-height: 300px; */
+}
+/* chart section ending */

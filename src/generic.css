@@ -1,0 +1,39 @@
+.flex{
+    display: flex;
+}
+.flex-row{
+    flex-direction: row;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-justify-center{
+    justify-content: center;
+}
+.flex-items-center{
+    align-items: center;
+}
+.flex-justify-sb{
+    justify-content: space-between;
+}
+.flex-justify-sa{
+    justify-content: space-around;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.grid{
+    display: grid;
+}
+.flex-20{
+    flex:20%;
+}
+.flex-30{
+    flex:30%;
+}
+.flex-50{
+    flex:50%;
+}
+.margin-10{
+    margin:0 10px;
+}

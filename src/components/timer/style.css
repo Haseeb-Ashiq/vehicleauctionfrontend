@@ -1,0 +1,9 @@
+/* timer sec */
+.timer div{
+    height:50px;
+    width:50px;
+    border:1px solid black;
+    border-radius: 50%;
+    font-size: 15px;
+    }
+    /* timer sec end */

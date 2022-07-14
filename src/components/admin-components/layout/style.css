@@ -1,0 +1,50 @@
+@import url('../../../generic.css');
+
+.admin-main-container{
+    height: 85vh;
+    width:85%;
+    /* border:1px solid rgba(0, 0, 0, 0.7); */
+    background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(.5rem);
+    -webkit-backdrop-filter: blur(.5rem);
+   margin:25px auto;
+   border-radius: 10px;
+   position: relative;
+   z-index: 10000;
+   padding:25px;
+   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+.admin-main{
+    max-height:82vh;
+    width:95%;
+    margin:10px auto;
+    background: linear-gradient(to right bottom,rgba(255, 255, 255, 0.4),rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(.5rem);
+    -webkit-backdrop-filter: blur(.5rem);
+    border-radius: 1rem;
+}
+.admin-main .side-bar{
+    height:82vh;
+    border-right:1px dotted black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width:20%;
+    z-index: 10000;
+    transition:all .5s ease-in;
+    /* position:fixed;
+    left:0; */
+}
+.admin-main .main-content{
+    min-height:82vh;
+    width:80%;
+    /* border:1px solid black; */
+    /* position:fixed;
+    right:0; */
+    margin:0 auto;
+}
+@media screen and (max-width:600px)
+{
+    .admin-main .side-bar{
+        width:0%;
+    }
+}

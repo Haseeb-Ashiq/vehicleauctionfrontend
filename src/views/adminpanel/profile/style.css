@@ -1,0 +1,65 @@
+@import url('../../../generic.css');
+
+.user-profile-container{
+    min-height:70vh;
+    width: 90%;
+    margin:50px auto;
+    /* border:1px solid black; */
+}
+.user-profile-container .user-profile-wrapper{
+    min-height:65vh;
+    width:80%;
+    margin:20px auto;
+    border:1px solid black;
+    border-radius: 5px;
+}
+.user-profile-wrapper .profile-upper{
+    min-height:20vh;
+    width:100%;
+    border-bottom: 1px solid black;
+    background-color: #ff66d3;
+    position: relative;
+}
+.profile-upper .profile-img-box{
+    height:150px;
+    width:150px;
+    border:5px solid whitesmoke;
+    border-radius: 50%;
+    position:absolute;
+    margin:50px 270px;
+    background-color: white;
+}
+.profile-upper .profile-img-box img{
+    height:140px;
+    width:140px;
+    border-radius: 50%;
+    margin:5px 5px;
+}
+.user-profile-wrapper .profile-lower{
+    min-height:45vh;
+    width:100%;
+    /* border: 1px solid black; */
+}
+.profile-lower .profile-detail{
+    min-height:40vh;
+    width:90%;
+    margin:15px auto;
+    /* border:1px solid black; */
+}
+.profile-detail .user-name{
+    margin:20px 0;
+}
+.profile-detail .user-name button{
+    height:30px;
+    width:70px;
+    border:1px solid #ff66d3;
+    outline: none;
+    border-radius: 5px;
+    background:transparent;
+    transition:all .5s ease-in;
+    cursor: pointer;
+}
+.profile-detail .user-name button:hover{
+    background-color: #ff66d3;
+    color:white;
+}

@@ -1,0 +1,83 @@
+@import url('../../generic.css');
+
+.login-window-container-row{
+min-height:70vh;
+width:100%;
+}
+.login-container{
+    height:60vh;
+    width:90%;
+    margin:20px auto;
+    border:1px solid black;
+}
+.login-container .login-img-side,
+.login-container .login-input-side{
+    width:100%;
+    height:100%;
+    /* border:1px solid black; */
+}
+.login-container .login-input-side{
+    border-left:1px dotted black;
+}
+.login-img-side .login-img-box{
+    height:90%;
+    width:90%;
+}
+.login-img-side .login-img-box img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+.login-input-side .login-input-area{
+    height:90%;
+    width:90%;
+    margin:20px auto;
+    /* border:1px solid black; */
+}
+.login-input-area .input-field,
+.login-input-area .checkbox-field,
+.login-input-area .button-field,
+.login-input-area .signup-text-field{
+    /* border:1px solid black; */
+    width:80%;
+    margin:10px auto;
+}
+.input-field input{
+    height:30px;
+    width:90%;
+    outline: none;
+border:1px solid #ff66d3;
+border-radius: 5px;
+    /* margin:0 auto; */
+
+}
+.checkbox-field input{
+height:20px;
+width:20px;
+margin:0 15px;
+cursor: pointer;
+}
+.button-field button{
+    height:40px;
+    width:50%;
+    cursor: pointer;
+    background-color: transparent;
+    border:1px solid #ff66d3;
+    text-transform: capitalize;
+    color:black;
+    font-size: 18px;
+    transition:all .5s ease-in;
+    margin:0 15px;
+    border-radius: 5px;
+    position: relative;
+}
+.button-field button:hover {
+    background-color: #ff66d3;
+    color:white;
+}
+.signup-text-field a{
+ list-style: none;
+ text-decoration: none;
+ color:#ff66d3;
+ margin:0 5px;
+}

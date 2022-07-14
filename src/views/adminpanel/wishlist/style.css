@@ -1,0 +1,46 @@
+@import url('../../../generic.css');
+:root{
+    --f1-color:#000;
+    --f2-color:#808080;
+    --f3-color:#fff;
+    --f4-color:#009933;
+    --f5-color:#ff66b3;
+    --f6-color:#ff99cc;
+    --f7-color:rgba(104,80,80,.03);
+    --f8-color:rgba(104,80,80,0.05);
+    --f9-color:#bb99ff;
+    --f10-color:#c2d6d6;
+}
+.wishlist-container-row{
+    max-height:50vh;
+    max-width: 100%;
+    /* border:1px solid black; */
+    overflow-y: auto;
+}
+.table-container{
+    min-height: 45vh;
+    width:90%;
+    /* border:1px solid black; */
+    margin:10px auto;
+}
+.table-container table{
+    /* border:1px solid black; */
+    height:100%;
+    width:100%;
+    margin:0 auto;
+    border-right:1px solid black;
+    border-top:1px solid black;
+    border-radius: 5px;
+}
+.table-container table thead{
+    background-color:var(--f2-color);
+    color:var(--f3-color)
+}
+.table-container table tr th,td{
+    padding:20px;
+    border-left:1px solid black;
+    border-bottom:1px solid black;
+}
+.table-container table tr:nth-child(even){
+    background-color: var(--f8-color);
+}
