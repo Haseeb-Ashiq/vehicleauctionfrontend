@@ -34,10 +34,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route exact path='/' element={<Index/>}/> */}
+          <Route exact path='/' element={<Index/>}/>
           <Route element={<PrivateRouter/>}>
-               <Route exact path='/bid/:id' element={<Bid socketRef={socketRef}/>}/>
-               <Route exact path='/' element={<Index/>} /> 
+               <Route exact path='/bid/:id' element={<Bid socketRef={socketRef}/>}/> 
                <Route exact path='/dashboard' element={<Home/>} />     
                <Route exact path='/bidonvehicles' element={<BidsOnVehicle/>}/>
                <Route exact path='/wishlist' element={<WishList/>} />
