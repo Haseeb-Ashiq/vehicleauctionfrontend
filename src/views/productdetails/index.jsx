@@ -9,34 +9,40 @@ import { clear } from '@testing-library/user-event/dist/clear';
 import useTimer from '../../components/hook/useTimer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../../Redux/actions/product.action';
+import { getOneProduct, getProduct } from '../../Redux/actions/product.action';
 import {getUser} from '../../Redux/actions/user.action';
 import { addBid, getBids } from '../../Redux/actions/bid.action';
-function Bid() {
+import { imgBase } from '../../apiConfig';
+function Bid({socketRef}) {
+    const ref=useRef();
+    const params=useParams();
     const dispatch=useDispatch();
-    const product=useSelector(state=>state.Product);
+    const {products}=useSelector(state=>state.Product);
     const {user}=useSelector(state=>state.User);
     const {isBid,bids} = useSelector(state=>state.Bid);
     const [bidField,setBidField]=useState(false);
     const [bid,setBid]=useState('');
     const [fdate,setFDate]=useState('');
-    const ref=useRef();
-    const params=useParams();
-    const [imgUrl,setImgUrl]=useState(img)
-    const [days,hours,minutes,secs,Counter]=useTimer({future:product?.product?.auctionEndDate});
+    const [imgUrl,setImgUrl]=useState('')
+    const [product,setProduct]=useState({...products.find(p=>p._id===params.id)});
+    const [days, setDays] = useState('');
+    const [hours, setHours] = useState('');
+    const [minutes, setMinutes] = useState('');
+    const [secs, setSecs] = useState('');
+    const [users,setUsers]=useState([]);
+    const [bider,setBider]=useState();
+    let id = '';
+    // const [days,hours,minutes,secs,Counter]=useTimer({future:product?.product?.auctionEndDate});
+    // setImgUrl(product?.product?.productPictures[0].img)
     useEffect(()=>{
-        const m=()=>{
-        return Counter();
-        }
-m();
-    },[])
-    useEffect(()=>{
-    dispatch(getOneProduct(params.id)); 
+        dispatch(getOneProduct(params.id))
     dispatch(getUser())
-    dispatch(getBids(product?.product?._id))
     },[])
     useEffect(()=>{
-       isBid && console.log('add successfully')
+        dispatch(getBids(product?.product?._id))
+    },[])
+    useEffect(()=>{
+        TimerHandler(product.auctionEndDate);
     },[])
     const getRef=()=>{
         let tagArr=Array.from(ref.current.children);
@@ -56,36 +62,72 @@ m();
 
     const hanldeBidInput=(e)=>{
         const bids={
-              product:product.product._id,
-              auctionNo:product.product._id,
+              product:product._id,
+              auctionNo:product._id,
               user:user._id,
               bid
         }
         dispatch(addBid(bids));
         dispatch(getBids(product?.product?._id));
+        socketRef.current.emit('join',{name:'Muhammad Haseeb',roomId:params.id})
+        // socketRef.current.on('joined',({clients})=>{
+        // setUsers(clients);
+        // })
+        socketRef.current.on('NewBid',({_bids})=>{
+              setBider({..._bids})
+              })
     }
+    const TimerHandler=(future)=>{
+        id = setInterval(() => {
+            let futureDate=new Date(future).getTime();
+            let now=new Date().getTime();
+            let distance = futureDate - now;
+            let day = Math.floor(distance / (1000 * 60 * 60 * 24));
+            let hour = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let min = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let sec = Math.floor((distance % (1000 * 60)) / (1000));
+            if (distance < 0) {
+                clearInterval(id);
+            }
+            else {
+                setDays(day);
+                setHours(hour);
+                setMinutes(min);
+                setSecs(sec);
+            }
+        }, 1000);
+
+    }
+
   return (
    <>
-   {
-        console.log(product.product)
-   }
    <Layout>
        <div className="bid-container-row">
+           <h3>Contributers</h3>
+           {bider?.bid}
+           {/* {users.length > 0 ? users.map(u=><p>{u.socketId}</p>) : <></>} */}
+           {/* {product._id===bider.auctionNo ? bider.bid : ''} */}
+       </div>
+
+       <div className="bid-container-row">
            <div className="bid-details flex flex-row">
+              
                <div className="bid-image-sec flex-50 flex flex-column">
                    <div className="main-image-box">
-                       <img src={imgUrl}/>
+                       <img src={`${imgBase}/${product?.productPictures[0].img}`}/>
                    </div>
                    <div ref={ref} onClick={getRef} className="img-tabs flex flex-row flex-justify-center flex-items-center">
-                   <div className="img-1 active">
-                   <img src={img}/>
+                   {
+                       product?.productPictures?.map(p=>(
+                           <>
+                            <div className="img-1">
+                   <img src={`${imgBase}/${p.img}`}/>
                    </div>
-                   <div className="img-2">
-                       <img src={img2}/>
-                   </div>
-                   <div className="img-3">
-                   <img src={img3}/>
-                   </div>
+                           </>
+                       ))
+                   }
+                  
+                   
                    </div>
                </div>
 
@@ -96,7 +138,7 @@ m();
                       </div>
                       <div className="bid-detail-info">
                           <div className="car-name flex flex-justify-center flex-items-center">
-                              <h3>{product?.product?.name}</h3>
+                              <h3>{product?.name}</h3>
                           </div>
                           <div className="total-bids">
                               <h4>Total Bids: <span>{bids?.length}</span></h4>
@@ -118,13 +160,14 @@ m();
                       </div>
                   </div>
                </div>
+
            </div>
        </div>
       {/* products detail */}
       <div className="bid-container-row">
           <div className="detail-inner">
               <h2>Vehicle Details</h2>
-              <table className='table' cellSpacing={0}>
+              {/* <table className='table' cellSpacing={0}>
                   <thead>
                       <tr>
                           <th>Vehicle ID</th>
@@ -163,7 +206,7 @@ m();
                       <td colSpan={4}>{product?.product?.detail?.description}</td>
                       </tr>
                   </thead>
-              </table>
+              </table> */}
           </div>
       </div>
    </Layout>

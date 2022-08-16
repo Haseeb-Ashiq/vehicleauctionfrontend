@@ -5,7 +5,7 @@ import { GET_ONE_PRODUCT, GET_PRODUCT_CATAGORY_REQUEST, GET_PRODUCT_CATAGORY_SUC
 export const getProduct=()=>{
     return async (dispatch) => {
         dispatch({type:PRODUCT_REQUEST,payload:''})
-        const product=await axios.get(`http://localhost:5000/api/product/getproducts`)
+        const product=await axios.get(`${apiBase}/product/getproducts`)
         console.log(product)
         if(product.status===200)
         {
@@ -16,6 +16,7 @@ export const getProduct=()=>{
 }
 export const getOneProduct=(id)=>{
     return async (dispatch) => {
+        console.log(id)
         dispatch({type:GET_ONE_PRODUCT,payload:id})
     }
 }

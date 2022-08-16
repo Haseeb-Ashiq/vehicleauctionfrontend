@@ -1,18 +1,19 @@
 @import url('../../generic.css');
 
 .bid-container-row{
-    min-height: 50vh;
+    min-height: 30vh;
     width:100%;
+    border-bottom:1px solid black;
 }
 .bid-container-row .bid-details{
-    min-height:45vh;
+    min-height:30vh;
     width:90%;
     /* border:1px solid black; */
     margin:10px auto;
 }
 .bid-details .bid-image-sec,
 .bid-details .bid-detail-sec{
-    min-height:45vh;
+    min-height:30vh;
     width:100%;
 }
 .bid-details .bid-detail-sec{
@@ -131,7 +132,7 @@ width:100%;
 
 /* product details */
 .detail-inner{
-    min-height:45vh;
+    /* min-height:45vh; */
     width:90%;
     border-top:1px dotted black;
     margin:10px auto;

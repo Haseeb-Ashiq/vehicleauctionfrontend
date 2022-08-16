@@ -1,11 +1,4 @@
 @import url('../../../generic.css');
-
-.auction-container{
-    min-height:75vh; 
-    width:100%;
-    /* border:1px solid black; */
-    margin:20px auto;
-}
 .table-container{
     min-height:70vh;
     width:80%;

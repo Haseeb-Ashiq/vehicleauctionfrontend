@@ -8,7 +8,8 @@ const initial={
     products:[],
     filterProducts:[],
     wish:[],
-    product:''
+    isOneLoaded:false,
+    product:{}
 }
 
 export const ProductReducer=(state=initial,action)=>{
@@ -31,7 +32,8 @@ switch (action.type) {
             case GET_ONE_PRODUCT:
                 return {
                     ...state,
-                    product:state.products.find(pro=>pro._id===action.payload)
+                    isOneLoaded:true,
+                    product:{...state.products.find(pro=>pro._id===action.payload)}
                 }
                 case WISH_LIST_REQUEST:
                     return {

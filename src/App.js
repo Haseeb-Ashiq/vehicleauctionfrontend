@@ -4,7 +4,7 @@ import Bid from "./views/productdetails";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PrivateRouter } from "./components/hoc/privateRouter";
 import Home from "./views/adminpanel/admin-home";
 import BidsOnVehicle from "./views/adminpanel/bidsonproduct";
@@ -12,9 +12,23 @@ import WishList from "./views/adminpanel/wishlist";
 import Won from "./views/adminpanel/won";
 import Profile from "./views/adminpanel/profile";
 import EditProfile from "./views/adminpanel/editprofile";
+import { SocketInit } from "./socket";
 function App() {
   const user=useSelector(state=>state.User);
+  const socketRef=useRef(null);
+  const [bider,SetBider]=useState();
   useEffect(()=>{
+    const init=async ()=>{
+      socketRef.current= await SocketInit();
+      // socketRef.current.emit('join',{name:'Muhammad Haseeb'})
+      // socketRef.current.on('joind',({msg})=>{
+      //   console.log(msg)
+      // })
+      // socketRef.current.on('NewBid',({_bids})=>{
+      //   SetBider({..._bids})
+      //   })
+    }
+    init();
   },[])
   return (
     <div className="App">
@@ -22,7 +36,7 @@ function App() {
         <Routes>
           {/* <Route exact path='/' element={<Index/>}/> */}
           <Route element={<PrivateRouter/>}>
-               <Route exact path='/bid/:id' element={<Bid/>}/>
+               <Route exact path='/bid/:id' element={<Bid socketRef={socketRef}/>}/>
                <Route exact path='/' element={<Index/>} /> 
                <Route exact path='/dashboard' element={<Home/>} />     
                <Route exact path='/bidonvehicles' element={<BidsOnVehicle/>}/>

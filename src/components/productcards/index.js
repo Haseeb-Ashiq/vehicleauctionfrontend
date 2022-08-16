@@ -8,6 +8,7 @@ import useTimer from '../hook/useTimer';
 import { Navigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addWishList } from '../../Redux/actions/product.action';
+import { imgBase } from '../../apiConfig';
 function ProductCard(props) {
     const [days,hours,minutes,secs,Counter]=useTimer({future:props.pro.auctionEndDate});
     const dispatch=useDispatch();
@@ -20,7 +21,7 @@ function ProductCard(props) {
                 <div className="product-inner-cards flex flex-column">
                     <Timer  days={days} hours={hours} minutes={minutes} secs={secs}/>
                     <div className="product-image flex flex-justify-center flex-items-center">
-                        <img src={car} alt="" />
+                        <img src={`${imgBase}/${props.pro?.productPictures[0]?.img}`} alt="" />
                     </div>
                     <div className="btn-sec flex flex-justify-center flex-items-center">
                         <Link to={`/bid/${props.pro._id}`} className='flex flex-justify-center flex-items-center'><FaGavel /> Bid</Link>

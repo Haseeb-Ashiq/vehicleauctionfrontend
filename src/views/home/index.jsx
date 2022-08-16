@@ -9,6 +9,7 @@ import { getProduct, getProductByCatagory } from '../../Redux/actions/product.ac
 import loader from '../../images/loading.gif';
 import { Navigate,useNavigate } from 'react-router-dom';
 import { getCatagory } from '../../Redux/actions/catagory.action';
+import { imgBase } from '../../apiConfig';
 // import '../../generic.css';
 function Index() {
   const navigate=useNavigate();
@@ -49,7 +50,7 @@ function Index() {
               <>
                <div key={index} onClick={()=>dispatch(getProductByCatagory(cata._id))} className="catagory-items flex flex-column flex-justify-center flex-items-center">
             <div className="cata-img-box">
-              <img src={`http://localhost:5000/public/${cata.image}`} alt="" />
+              <img src={`${imgBase}/${cata.image}`} alt="" />
             </div>
             <div className="cata-text-box">
               <h3>{cata.name}</h3>

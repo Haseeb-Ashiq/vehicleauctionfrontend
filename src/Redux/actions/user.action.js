@@ -5,7 +5,7 @@ export const signupUser=(obj)=>{
 
     return async (dispatch) => {
         dispatch({type:USER_REGISTER_REQUEST,payload:''})
-        const user= await axios.post('http://localhost:5000/api/user/register',obj);
+        const user= await axios.post(`${apiBase}/user/register`,obj);
         console.log(user)
         if(user.status===201)
         {
@@ -18,7 +18,7 @@ export const signinUser=(obj)=>{
     return async (dispatch) => {
         dispatch({type:LOGIN_REQUEST,payload:''})
         console.log(obj)
-        const user= await axios.post('http://localhost:5000/api/user/login',obj)
+        const user= await axios.post(`${apiBase}/user/login`,obj)
         window.localStorage.setItem('userCredential',JSON.stringify(user.data._user));
         console.log(user.status)
         if(user.status===200)

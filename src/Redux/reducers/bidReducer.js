@@ -1,12 +1,14 @@
-import { BID_REQUEST, BID_SUCCESS, GET_BID_REQUEST, GET_BID_SUCCESS } from "../typecontants/constants";
+import { BID_REQUEST, BID_SUCCESS, GET_BID_REQUEST, GET_BID_SUCCESS, VIEW_AUCTION_REQUEST, VIEW_AUCTION_SUCCESS } from "../typecontants/constants";
 
 const initial={
     isBiding:false,
     isBid:false,
     isBidLoading:false,
     isBidLoaded:false,
+    isAuctionLoaded:false,
     bid:'',
-    bids:[]
+    bids:[],
+    auction:[]
 }
 
 export const bidReducer=(state=initial,action) =>{
@@ -35,6 +37,17 @@ export const bidReducer=(state=initial,action) =>{
                             isBidLoaded:true,
                             bids:[...action.payload]
                         }
+                        case VIEW_AUCTION_REQUEST:
+                            return {
+                                ...state,
+                                isAuctionLoaded:false
+                            }
+                            case VIEW_AUCTION_SUCCESS:
+                                return {
+                                    ...state,
+                                    isAuctionLoaded:true,
+                                    auction:[...action.payload].reverse()
+                                }
 
     
         default:

@@ -10,6 +10,8 @@ function useTimer({ future }) {
     console.log('from useTimer hook ',future)
     const Counter = () => {
         id = setInterval(() => {
+            if(future!==undefined)
+            {
             const futures = new Date(String(future)).getTime();
             const now = new Date().getTime();
             const distance = futures - now;
@@ -27,6 +29,7 @@ function useTimer({ future }) {
                 setMinutes(minut);
                 setSecs(sec);
             }
+        }
         }, 1000);
     }
 

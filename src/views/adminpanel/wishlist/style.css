@@ -12,7 +12,7 @@
     --f10-color:#c2d6d6;
 }
 .wishlist-container-row{
-    max-height:50vh;
+    max-height:75vh;
     max-width: 100%;
     /* border:1px solid black; */
     overflow-y: auto;
