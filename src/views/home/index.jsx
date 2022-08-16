@@ -26,7 +26,7 @@ function Index() {
       <Layout>
         <div className="hero-container flex flex-row">
           <div className="text-box flex-50 flex flex-column flex-justify-center flex-items-center">
-            <h1>World's Biggest Vehicle Auction System</h1>
+            <h1>World's Biggest Cars Auction System</h1>
             <div className="btn-section">
               <button onClick={() => navigate('/signup') }><FaRegUser /> Register Now</button>
             </div>
